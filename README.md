@@ -2,5 +2,5 @@
 2015.május emelt szintű informatikai érettségi feladat- Expedíció - Programozás
 
 Csapattagok:
-- Bicskey Balázs
-- Anda Kristóf
+> Bicskey Balázs
+> Anda Kristóf
