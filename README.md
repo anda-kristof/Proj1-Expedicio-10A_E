@@ -3,4 +3,4 @@
 
 Csapattagok:
 * Bicskey Balázs
-* Anda Kristóf
+> Anda Kristóf
