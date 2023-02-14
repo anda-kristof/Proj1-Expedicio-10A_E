@@ -17,6 +17,11 @@ def main() -> None:
             if sor_száma == len(fájl.splitlines()):
                 break
 
+    első_üzenet_rögzítője: int = rádioadatok[0].rádióamatőr_sorszáma
+    utolsó_üzenet_rögzítője: int = rádioadatok[len(rádioadatok) - 1].rádióamatőr_sorszáma
+
+    print(f'2. feladat:\nAz első üzenet rögzítője: {első_üzenet_rögzítője}\nAz utolsó üzenet rógzítője: {utolsó_üzenet_rögzítője}')
+
 
 if __name__ == "__main__":
     main()
