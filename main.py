@@ -20,7 +20,14 @@ def main() -> None:
     első_üzenet_rögzítője: int = rádioadatok[0].rádióamatőr_sorszáma
     utolsó_üzenet_rögzítője: int = rádioadatok[len(rádioadatok) - 1].rádióamatőr_sorszáma
 
+    # 2.feladat
     print(f'2. feladat:\nAz első üzenet rögzítője: {első_üzenet_rögzítője}\nAz utolsó üzenet rógzítője: {utolsó_üzenet_rögzítője}')
+
+    # 3.feladat
+    print("\n3.Feladat:")
+    for adat in rádioadatok:
+        if "farkas" in adat.rádió_üzenet:
+            print(f'{adat.nap_sorszáma}. nap {adat.rádióamatőr_sorszáma}. rádióamatőr')
 
 
 if __name__ == "__main__":
