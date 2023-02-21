@@ -8,7 +8,8 @@ class Megoldas:
     def első_utolsó_küldő(self):
         első_üzenet_rögzítője: int = self._üzenetek[0].rádióamatőr_sorszáma
         utolsó_üzenet_rögzítője: int = self._üzenetek[len(self._üzenetek) - 1].rádióamatőr_sorszáma
-        return f"2. feladat:\nAz első üzenet rögzítője: {első_üzenet_rögzítője}\nAz utolsó üzenet rógzítője: {utolsó_üzenet_rögzítője}"
+        első_utsó = [első_üzenet_rögzítője,utolsó_üzenet_rögzítője]
+        return első_utsó
 
     @property
     def mennyi_üzenet(self) -> dict[int, int]:
@@ -30,6 +31,39 @@ class Megoldas:
             else:
                 vissza += f'{key}. nap: = 0 rádióamatőr\n'
         return vissza
+    
+    @property
+    def napok_száma(self) -> int:
+        napok: list[int] = []
+        for nap in self._üzenetek:
+            if nap.nap_sorszáma not in napok:
+                napok.append(nap.nap_sorszáma)
+        return len(napok)
+    
+    # ehhez ne nyúlj mert ha elromlik akasztom magam
+    @property
+    def üzenet_helyreállítása(self):
+        napszám: int = 1
+        üzenetek_helyreállítva: list[str] = []
+        while napszám <= self.napok_száma:
+            naphoz_tartozó_üzenetek: list[str] = []
+            for uzenet in self._üzenetek:
+                if uzenet.nap_sorszáma == napszám:
+                    naphoz_tartozó_üzenetek.append(uzenet.rádió_üzenet)
+            nap_üzenete: str = ''        
+            for i, e in enumerate(naphoz_tartozó_üzenetek[0]):
+                index = 1
+                while e == "#":
+                    e = naphoz_tartozó_üzenetek[index][i]
+                    index += 1
+                    if index > len(naphoz_tartozó_üzenetek) - 1:
+                        break
+                if e != '#':
+                    nap_üzenete += e
+            üzenetek_helyreállítva.append(nap_üzenete)
+            napszám += 1
+        return üzenetek_helyreállítva
+
 
     def __init__(self, forrásnév: str):
         self._üzenetek: list[üzenet] = []
@@ -50,3 +84,8 @@ class Megoldas:
         for adat in self._üzenetek:
             if szöveg in adat.rádió_üzenet:
                 print(f'{adat.nap_sorszáma}. nap {adat.rádióamatőr_sorszáma}. rádióamatőr')
+                
+    def fájl_írás(self, fájlnév: str):
+        with open(fájlnév, 'w', encoding='utf-8') as file:
+            for sor in self.üzenet_helyreállítása:
+                file.write(f'{sor}\n')
