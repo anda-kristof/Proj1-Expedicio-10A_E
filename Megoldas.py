@@ -8,7 +8,7 @@ class Megoldas:
     def első_utolsó_küldő(self):
         első_üzenet_rögzítője: int = self._üzenetek[0].rádióamatőr_sorszáma
         utolsó_üzenet_rögzítője: int = self._üzenetek[len(self._üzenetek) - 1].rádióamatőr_sorszáma
-        első_utsó = [első_üzenet_rögzítője,utolsó_üzenet_rögzítője]
+        első_utsó = [első_üzenet_rögzítője, utolsó_üzenet_rögzítője]
         return első_utsó
 
     @property
@@ -40,7 +40,6 @@ class Megoldas:
                 napok.append(nap.nap_sorszáma)
         return len(napok)
 
-    # ehhez ne nyúlj mert ha elromlik akasztom magam
     @property
     def üzenet_helyreállítása(self):
         napszám: int = 1
@@ -93,4 +92,24 @@ class Megoldas:
         valasz: bool = False
         if szo.isdigit():
             valasz = True
+        return valasz
+
+    def megadott_üzenet(self, megadott_nap_sorszáma: int, megadott_amatőr_sorszáma: int) -> str:
+        valasz: str = ''
+        for e in self._üzenetek:
+            if megadott_nap_sorszáma == e.nap_sorszáma and megadott_amatőr_sorszáma == e.rádióamatőr_sorszáma:
+                valasz: str = e.rádió_üzenet
+        if valasz == '':
+            return valasz
+        else:
+            return valasz
+
+    def egyedek_száma(self, megadott_üzenet: str) -> str:
+        valasz: str = ''
+        if megadott_üzenet == '':
+            valasz = 'Nincs ilyen feljegyzés'
+        elif self.szame(megadott_üzenet[0]) and self.szame(megadott_üzenet[2]):
+            valasz = f'A megfigyelt egyedek száma: {int(megadott_üzenet[0]) + int(megadott_üzenet[2])}'
+        else:
+            valasz = 'Nincs információ'
         return valasz

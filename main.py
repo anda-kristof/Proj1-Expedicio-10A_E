@@ -20,6 +20,12 @@ def main() -> None:
     # 5. feladat
     üzenet_adatok.fájl_írás('adaas.txt')
 
+    # 7.feladat
+    print("7. feladat")
+    megadott_nap_sorszáma: int = int(input("Adja meg a nap sorszámát! "))
+    megadott_amatőr_sorszáma: int = int(input("Adja meg a rádióamatőr sorszámát! "))
+    print(üzenet_adatok.egyedek_száma(üzenet_adatok.megadott_üzenet(megadott_nap_sorszáma, megadott_amatőr_sorszáma)))
+
 
 if __name__ == "__main__":
     main()
