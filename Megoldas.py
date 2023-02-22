@@ -31,7 +31,7 @@ class Megoldas:
             else:
                 vissza += f'{key}. nap: = 0 rádióamatőr\n'
         return vissza
-    
+
     @property
     def napok_száma(self) -> int:
         napok: list[int] = []
@@ -39,7 +39,7 @@ class Megoldas:
             if nap.nap_sorszáma not in napok:
                 napok.append(nap.nap_sorszáma)
         return len(napok)
-    
+
     # ehhez ne nyúlj mert ha elromlik akasztom magam
     @property
     def üzenet_helyreállítása(self):
@@ -50,7 +50,7 @@ class Megoldas:
             for uzenet in self._üzenetek:
                 if uzenet.nap_sorszáma == napszám:
                     naphoz_tartozó_üzenetek.append(uzenet.rádió_üzenet)
-            nap_üzenete: str = ''        
+            nap_üzenete: str = ''
             for i, e in enumerate(naphoz_tartozó_üzenetek[0]):
                 index = 1
                 while e == "#":
@@ -63,7 +63,6 @@ class Megoldas:
             üzenetek_helyreállítva.append(nap_üzenete)
             napszám += 1
         return üzenetek_helyreállítva
-
 
     def __init__(self, forrásnév: str):
         self._üzenetek: list[üzenet] = []
@@ -84,8 +83,14 @@ class Megoldas:
         for adat in self._üzenetek:
             if szöveg in adat.rádió_üzenet:
                 print(f'{adat.nap_sorszáma}. nap {adat.rádióamatőr_sorszáma}. rádióamatőr')
-                
+
     def fájl_írás(self, fájlnév: str):
         with open(fájlnév, 'w', encoding='utf-8') as file:
             for sor in self.üzenet_helyreállítása:
                 file.write(f'{sor}\n')
+
+    def szame(self, szo: str) -> bool:
+        valasz: bool = False
+        if szo.isdigit():
+            valasz = True
+        return valasz
