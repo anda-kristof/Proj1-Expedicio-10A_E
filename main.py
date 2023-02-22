@@ -6,8 +6,9 @@ def main() -> None:
     üzenet_adatok: Megoldas = Megoldas("veetel.txt")
 
     # 2.feladat
-
-    print(f"2. feladat:\nAz első üzenet rögzítője: {üzenet_adatok.első_utolsó_küldő[0]}\nAz utolsó üzenet rógzítője: {üzenet_adatok.első_utolsó_küldő[1]}")
+    print("2. feladat:")
+    print(f'Az első üzenet rögzítője: {üzenet_adatok.első_utolsó_küldő[0]}')
+    print(f"Az utolsó üzenet rógzítője: {üzenet_adatok.első_utolsó_küldő[1]}")
 
     # 3.feladat
     print("\n3.Feladat:")
