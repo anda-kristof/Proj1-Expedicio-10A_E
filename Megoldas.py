@@ -1,8 +1,8 @@
-from üzenet import üzenet
+from Uzenet import Uzenet
 
 
 class Megoldas:
-    _üzenetek: list[üzenet]
+    _üzenetek: list[Uzenet]
 
     @property
     def első_utolsó_küldő(self):
@@ -64,16 +64,17 @@ class Megoldas:
         return üzenetek_helyreállítva
 
     def __init__(self, forrásnév: str):
-        self._üzenetek: list[üzenet] = []
+        self._üzenetek: list[Uzenet] = []
         sor_száma: int = 1
         with open(forrásnév, 'r', encoding='utf-8') as file:
             fájl: str = file.read()
             for sor in fájl.splitlines():
+                sorok = fájl.splitlines()
                 sor_száma2: int = sor_száma - 1
-                sor1: str = fájl.splitlines()[sor_száma2]
-                sor2: str = fájl.splitlines()[sor_száma]
+                sor1: str = sorok[sor_száma2]
+                sor2: str = sorok[sor_száma]
                 if sor_száma % 2 != 0:
-                    self._üzenetek.append(üzenet(sor1, sor2))
+                    self._üzenetek.append(Uzenet(sor1, sor2))
                 sor_száma += 1
                 if sor_száma == len(fájl.splitlines()):
                     break
