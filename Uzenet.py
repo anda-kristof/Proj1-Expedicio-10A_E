@@ -1,4 +1,4 @@
-class üzenet:
+class Uzenet:
     _nap_sorszáma: int
     _rádióamatőr_sorszáma: int
     _rádió_üzenet: str
